@@ -32,7 +32,7 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 	if(c == '0')
 		gpio_base[10] = 1 << 25;
 	else if(c == '1'){
-		for(p = 0;p <= 55;p++){
+		for(p = 0;p < 55;p++){
 			switch(p) {
 				case 2:
 				case 8:
