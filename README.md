@@ -24,12 +24,12 @@ git clone https://github.com/Yyoshinuma/Rsys2020.git
 cd Rsys2020/myled   
 make    
 sudo insmod myled.ko    
-  sudo rmmod myled  (insmodができない場合)
+  sudo rmmod myled  (insmodができない場合これを実行後insmodする)
 sudo chmod 666 /dev/myled0    
 echo 1 > /dev/myled0    
 ```
 
-# 実行イメージビデオ
+# 実行動画
 <https://youtu.be/YVg5n7G2vg4>
 
 # 参考文献
