@@ -31,3 +31,6 @@ echo 1 > /dev/myled0
 
 # 実行イメージビデオ
 <https://youtu.be/YVg5n7G2vg4>
+
+# 参考文献
+モールス信号の参考にしたサイト　<http://jr7ibw.com/CW/sign.html>
