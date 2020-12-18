@@ -11,7 +11,7 @@ Copyright(C) 2020 Yamato Yoshinuma All rights reserved.
 #include<linux/io.h>
 #include<linux/delay.h>
 
-MODULE_AUTHOR("Ryuichi Ueda");
+MODULE_AUTHOR("Ryuichi Ueda and Yamato Yoshinuma");
 MODULE_DESCRIPTION("driver for LED control");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.0.1");
@@ -21,10 +21,10 @@ static struct cdev cdv;
 static struct class *cls = NULL;
 static volatile u32 *gpio_base = NULL;
 
-static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_t* pos)
-{	
+static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_t* pos){	
 	int p;
 	char c;
+	
 	if(copy_from_user(&c,buf,sizeof(char)))
 		return -EFAULT;
 
@@ -33,7 +33,7 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 		gpio_base[10] = 1 << 25;
 	else if(c == '1'){
 		for(p = 0;p < 55;p++){
-			switch(p) {
+			switch(p){
 				case 2:
 				case 8:
 				case 10:
@@ -104,14 +104,13 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 				case 34:
 					msleep (1200);
 					break;
+				}
 			}
-		}
 		}
 	return 1;
 }
 
-static ssize_t sushi_read(struct file* filp, char* buf, size_t count, loff_t* pos)
-{
+static ssize_t sushi_read(struct file* filp, char* buf, size_t count, loff_t* pos){
 	int size=0;
 	char sushi[]={'s', 'u', 's','h', 'i'};
 	if(copy_to_user(buf+size,(const char *)sushi, sizeof(sushi))){
@@ -128,8 +127,7 @@ static struct file_operations led_fops = {
 	.read = sushi_read
 };
 
-static int __init init_mod(void)
-{
+static int __init init_mod(void){
 	int retval;
 	gpio_base = ioremap_nocache(0xfe200000, 0xA0);
 
@@ -163,8 +161,7 @@ static int __init init_mod(void)
 	return 0;
 }
 
-static void __exit cleanup_mod(void)
-{
+static void __exit cleanup_mod(void){
 	cdev_del(&cdv);
 	device_destroy(cls, dev);
 	class_destroy(cls);
