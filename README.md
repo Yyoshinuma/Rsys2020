@@ -38,5 +38,6 @@ sudo chmod 666 /dev/myled0
 echo 1 > /dev/myled0    
 ```
 
-# 参考文献
-モールス信号の参考にしたサイト　<http://jr7ibw.com/CW/sign.html>
+# ライセンス
+GNU General Public Licence v3.0
+
