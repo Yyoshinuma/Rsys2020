@@ -21,7 +21,7 @@ static struct cdev cdv;
 static struct class *cls = NULL;
 static volatile u32 *gpio_base = NULL;
 
-static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_t* pos){	
+static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_t* pos){
 	int p;
 	char c;
 	
