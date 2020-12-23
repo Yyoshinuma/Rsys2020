@@ -59,34 +59,6 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 					gpio_base[10] = 1<<25;
 					msleep (200);
 					break;
-				case 0:
-				case 1:
-				case 4:
-				case 5:
-				case 6:
-				case 9:
-				case 16:
-				case 21:
-				case 26:
-				case 28:
-				case 31:
-				case 32:
-				case 33:
-				case 37:
-				case 39:
-				case 42:
-				case 44:
-				case 46:
-				case 47:
-				case 48:
-				case 51:
-				case 53:
-				case 55:
-					gpio_base[7]=1<<25;
-					msleep (600);
-					gpio_base[10]=1<<25;
-					msleep (200);
-					break;
 				case 3:
 				case 7:
     				case 11:
@@ -104,9 +76,15 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 				case 34:
 					msleep (1200);
 					break;
+				default:
+					gpio_base[7]=1<<25;
+					msleep (600);
+					gpio_base[10]=1<<25;
+					msleep (200);
+					break;
+					}
 				}
 			}
-		}
 	return 1;
 }
 
