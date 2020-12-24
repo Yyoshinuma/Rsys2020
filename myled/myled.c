@@ -76,15 +76,15 @@ static ssize_t led_write(struct file* filp, const char* buf, size_t count, loff_
 					msleep (1200);
 					break;
 				default:
-					gpio_base[7]=1<<25;
+					gpio_base[7] = 1<<25;
 					msleep (600);
-					gpio_base[10]=1<<25;
+					gpio_base[10] = 1<<25;
 					msleep (200);
 					break;
+					}
 				}
 			}
-		}
-return 1;
+	return 1;
 }
 
 static ssize_t sushi_read(struct file* filp, char* buf, size_t count, loff_t* pos){
